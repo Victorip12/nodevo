@@ -1,129 +1,181 @@
+<!DOCTYPE html>
 
+<html lang="es" style="color-scheme: light only;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<style>:root{color-scheme:light}</style>
+<title>Nodevo — Automatización de Cobranza para Escuelas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#ffffff;--gray-50:#f8f8f7;--gray-100:#f0efeb;
+  --gray-200:#e0dfd9;--gray-400:#9a9893;--gray-600:#5c5b57;--gray-800:#2c2c2a;
+  --green:#3B6D11;--green-light:#EAF3DE;--red:#A32D2D;--red-light:#FCEBEB;
+}
+@media (prefers-color-scheme: dark) {
   :root{
-    --black:#0a0a0a;--white:#ffffff;--gray-50:#f8f8f7;--gray-100:#f0efeb;
-    --gray-200:#e0dfd9;--gray-400:#9a9893;--gray-600:#5c5b57;--gray-800:#2c2c2a;
-    --accent:#1a1a1a;--green:#3B6D11;--green-light:#EAF3DE;
+    --black:#0a0a0a !important;--white:#ffffff !important;--gray-50:#f8f8f7 !important;--gray-100:#f0efeb !important;
+    --gray-200:#e0dfd9 !important;--gray-400:#9a9893 !important;--gray-600:#5c5b57 !important;--gray-800:#2c2c2a !important;
+    --green:#3B6D11 !important;--green-light:#EAF3DE !important;--red:#A32D2D !important;--red-light:#FCEBEB !important;
   }
-  body{font-family:'DM Sans',sans-serif;color:var(--black);background:#fff;-webkit-font-smoothing:antialiased}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:0.5px solid var(--gray-200);position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);z-index:100}
-  .logo{font-family:'DM Mono',monospace;font-size:1.1rem;font-weight:500;letter-spacing:-0.02em;color:var(--black)}
-  .logo span{color:var(--gray-400)}
-  .nav-links{display:flex;gap:2rem;list-style:none}
-  .nav-links a{text-decoration:none;color:var(--gray-600);font-size:0.875rem;transition:color 0.15s}
-  .nav-links a:hover{color:var(--black)}
-  .btn-primary{background:var(--black);color:#fff;border:none;padding:0.6rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity 0.15s;font-weight:500}
-  .btn-primary:hover{opacity:0.85}
-  .btn-secondary{background:transparent;color:var(--black);border:0.5px solid var(--gray-200);padding:0.6rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;font-weight:400}
-  .btn-secondary:hover{border-color:var(--black)}
+  html, body { background: #ffffff !important; color: #0a0a0a !important; }
+}
+body{font-family:'DM Sans',sans-serif;color:#0a0a0a !important;background:#ffffff !important;-webkit-font-smoothing:antialiased}
+html{background:#ffffff !important;color:#0a0a0a !important}
 
-  .hero{padding:6rem 3rem 5rem;max-width:900px;margin:0 auto;text-align:center}
-  .hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-family:'DM Mono',monospace;color:var(--gray-600);border:0.5px solid var(--gray-200);padding:0.3rem 0.75rem;border-radius:100px;margin-bottom:2rem}
-  .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:#3B6D11}
-  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;line-height:1.15;letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem}
-  .hero h1 strong{font-weight:500}
-  .hero p{font-size:1.1rem;color:var(--gray-600);line-height:1.7;max-width:560px;margin:0 auto 2.5rem;font-weight:300}
-  .hero-actions{display:flex;align-items:center;justify-content:center;gap:1rem}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:0.5px solid var(–gray-200);position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);z-index:100}
+.logo{font-family:‘DM Mono’,monospace;font-size:1.1rem;font-weight:500;letter-spacing:-0.02em;color:var(–black)}
+.logo span{color:var(–gray-400)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(–gray-600);font-size:0.875rem;transition:color 0.15s}
+.nav-links a:hover{color:var(–black)}
+.btn-primary{background:var(–black);color:#fff;border:none;padding:0.6rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:‘DM Sans’,sans-serif;cursor:pointer;transition:opacity 0.15s;font-weight:500;text-decoration:none;display:inline-block}
+.btn-primary:hover{opacity:0.85}
+.btn-secondary{background:transparent;color:var(–black);border:0.5px solid var(–gray-200);padding:0.6rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:‘DM Sans’,sans-serif;cursor:pointer;transition:all 0.15s;font-weight:400}
+.btn-secondary:hover{border-color:var(–black)}
 
-  .logos{padding:3rem;border-top:0.5px solid var(--gray-100);border-bottom:0.5px solid var(--gray-100)}
-  .logos-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2rem;justify-content:center;flex-wrap:wrap}
-  .logos p{font-size:0.75rem;color:var(--gray-400);font-family:'DM Mono',monospace;white-space:nowrap}
-  .tech-pill{font-size:0.75rem;color:var(--gray-600);border:0.5px solid var(--gray-200);padding:0.3rem 0.85rem;border-radius:100px;font-family:'DM Mono',monospace}
+/* HERO */
+.hero{padding:6rem 3rem 5rem;max-width:900px;margin:0 auto;text-align:center}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-family:‘DM Mono’,monospace;color:var(–gray-600);border:0.5px solid var(–gray-200);padding:0.3rem 0.75rem;border-radius:100px;margin-bottom:2rem}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:#3B6D11}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;line-height:1.15;letter-spacing:-0.03em;color:var(–black);margin-bottom:1.5rem}
+.hero h1 strong{font-weight:500}
+.hero p{font-size:1.1rem;color:var(–gray-600);line-height:1.7;max-width:560px;margin:0 auto 2.5rem;font-weight:300}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
 
-  .section{padding:5rem 3rem;max-width:900px;margin:0 auto}
-  .section-label{font-size:0.7rem;font-family:'DM Mono',monospace;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
-  .section h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;letter-spacing:-0.02em;line-height:1.25;margin-bottom:1rem}
-  .section h2 strong{font-weight:500}
-  .section-sub{color:var(--gray-600);font-size:1rem;line-height:1.7;font-weight:300;max-width:520px;margin-bottom:3rem}
+/* LOGOS */
+.logos{padding:3rem;border-top:0.5px solid var(–gray-100);border-bottom:0.5px solid var(–gray-100)}
+.logos-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2rem;justify-content:center;flex-wrap:wrap}
+.logos p{font-size:0.75rem;color:var(–gray-400);font-family:‘DM Mono’,monospace;white-space:nowrap}
+.tech-pill{font-size:0.75rem;color:var(–gray-600);border:0.5px solid var(–gray-200);padding:0.3rem 0.85rem;border-radius:100px;font-family:‘DM Mono’,monospace}
 
-  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);border:0.5px solid var(--gray-200);border-radius:12px;overflow:hidden;margin-bottom:3rem}
-  .step{background:#fff;padding:1.75rem;position:relative}
-  .step-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--gray-400);margin-bottom:1rem}
-  .step h3{font-size:0.95rem;font-weight:500;margin-bottom:0.5rem;line-height:1.35}
-  .step p{font-size:0.85rem;color:var(--gray-600);line-height:1.6;font-weight:300}
+/* SECTIONS */
+.section{padding:5rem 3rem;max-width:900px;margin:0 auto}
+.section-label{font-size:0.7rem;font-family:‘DM Mono’,monospace;color:var(–gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
+.section h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;letter-spacing:-0.02em;line-height:1.25;margin-bottom:1rem}
+.section h2 strong{font-weight:500}
+.section-sub{color:var(–gray-600);font-size:1rem;line-height:1.7;font-weight:300;max-width:520px;margin-bottom:3rem}
 
-  .features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--gray-200);border:0.5px solid var(--gray-200);border-radius:12px;overflow:hidden}
-  .feature{background:#fff;padding:1.75rem}
-  .feature-icon{width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-  .feature h3{font-size:0.9rem;font-weight:500;margin-bottom:0.4rem}
-  .feature p{font-size:0.83rem;color:var(--gray-600);line-height:1.6;font-weight:300}
+/* HOW STEPS */
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(–gray-200);border:0.5px solid var(–gray-200);border-radius:12px;overflow:hidden;margin-bottom:3rem}
+.step{background:#fff;padding:1.75rem}
+.step-num{font-family:‘DM Mono’,monospace;font-size:0.7rem;color:var(–gray-400);margin-bottom:1rem}
+.step h3{font-size:0.95rem;font-weight:500;margin-bottom:0.5rem;line-height:1.35}
+.step p{font-size:0.85rem;color:var(–gray-600);line-height:1.6;font-weight:300}
 
-  .calc-section{padding:5rem 3rem;background:var(--gray-50);border-top:0.5px solid var(--gray-200);border-bottom:0.5px solid var(--gray-200)}
-  .calc-inner{max-width:900px;margin:0 auto}
-  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
-  .calc-controls{display:flex;flex-direction:column;gap:1.5rem}
-  .ctrl-group label{display:block;font-size:0.78rem;color:var(--gray-600);font-family:'DM Mono',monospace;margin-bottom:0.6rem}
-  .ctrl-group input[type=range]{width:100%;margin-bottom:0.3rem}
-  .ctrl-val{font-size:1rem;font-weight:500;color:var(--black);font-family:'DM Mono',monospace}
-  .calc-results{display:flex;flex-direction:column;gap:1px;background:var(--gray-200);border:0.5px solid var(--gray-200);border-radius:12px;overflow:hidden}
-  .result-row{background:#fff;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
-  .result-row.highlight{background:var(--black)}
-  .result-label{font-size:0.82rem;color:var(--gray-600);font-weight:300}
-  .result-label.light{color:rgba(255,255,255,0.6)}
-  .result-value{font-size:1rem;font-weight:500;font-family:'DM Mono',monospace;color:var(--black)}
-  .result-value.light{color:#fff}
-  .result-value.green{color:var(--green)}
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(–gray-200);border:0.5px solid var(–gray-200);border-radius:12px;overflow:hidden}
+.feature{background:#fff;padding:1.75rem}
+.feature-icon{width:32px;height:32px;border-radius:8px;background:var(–gray-100);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.feature h3{font-size:0.9rem;font-weight:500;margin-bottom:0.4rem}
+.feature p{font-size:0.83rem;color:var(–gray-600);line-height:1.6;font-weight:300}
 
-  .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--gray-200);border:0.5px solid var(--gray-200);border-radius:12px;overflow:hidden}
-  .plan{background:#fff;padding:2rem}
-  .plan.featured{background:var(--black)}
-  .plan-name{font-size:0.75rem;font-family:'DM Mono',monospace;color:var(--gray-400);margin-bottom:0.75rem}
-  .plan-name.light{color:rgba(255,255,255,0.5)}
-  .plan-price{font-size:2rem;font-weight:300;letter-spacing:-0.03em;margin-bottom:0.25rem;color:var(--black)}
-  .plan-price.light{color:#fff}
-  .plan-sub{font-size:0.8rem;color:var(--gray-400);margin-bottom:1.5rem;font-weight:300}
-  .plan-sub.light{color:rgba(255,255,255,0.4)}
-  .plan-features{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.75rem}
-  .plan-features li{font-size:0.83rem;color:var(--gray-600);display:flex;gap:0.5rem;font-weight:300}
-  .plan-features li.light{color:rgba(255,255,255,0.7)}
-  .check{color:var(--green);font-weight:500;font-size:0.9rem}
-  .check.light{color:#97C459}
-  .btn-white{background:#fff;color:var(--black);border:none;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;width:100%}
-  .btn-white:hover{opacity:0.9}
-  .btn-outline-light{background:transparent;color:#fff;border:0.5px solid rgba(255,255,255,0.3);padding:0.65rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:400;width:100%}
-  .btn-outline-light:hover{border-color:rgba(255,255,255,0.6)}
+/* CALC */
+.calc-section{padding:5rem 3rem;background:var(–gray-50);border-top:0.5px solid var(–gray-200);border-bottom:0.5px solid var(–gray-200)}
+.calc-inner{max-width:900px;margin:0 auto}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
+.calc-controls{display:flex;flex-direction:column;gap:1.5rem}
+.ctrl-group label{display:block;font-size:0.78rem;color:var(–gray-600);font-family:‘DM Mono’,monospace;margin-bottom:0.6rem}
+.ctrl-group input[type=range]{width:100%;margin-bottom:0.3rem;accent-color:var(–black)}
+.ctrl-val{font-size:1rem;font-weight:500;color:var(–black);font-family:‘DM Mono’,monospace}
+.calc-results{display:flex;flex-direction:column;gap:1px;background:var(–gray-200);border:0.5px solid var(–gray-200);border-radius:12px;overflow:hidden}
+.result-row{background:#fff;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+.result-row.highlight{background:var(–black)}
+.result-row.highlight-green{background:var(–green-light)}
+.result-label{font-size:0.82rem;color:var(–gray-600);font-weight:300}
+.result-label.light{color:rgba(255,255,255,0.6)}
+.result-value{font-size:1rem;font-weight:500;font-family:‘DM Mono’,monospace;color:var(–black)}
+.result-value.light{color:#fff}
+.result-value.green{color:var(–green)}
+.result-value.red{color:var(–red)}
 
-  .cta-section{padding:6rem 3rem;text-align:center;max-width:700px;margin:0 auto}
-  .cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:-0.03em;line-height:1.2;margin-bottom:1rem}
-  .cta-section h2 strong{font-weight:500}
-  .cta-section p{color:var(--gray-600);margin-bottom:2.5rem;font-size:1rem;font-weight:300;line-height:1.7}
+.roi-alert{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:0.83rem;line-height:1.6;font-weight:300;display:none}
+.roi-alert.negative{background:var(–red-light);color:var(–red);border:0.5px solid #F09595;display:block}
+.roi-alert.positive{background:var(–green-light);color:var(–green);border:0.5px solid #97C459;display:block}
 
-  .footer{padding:2rem 3rem;border-top:0.5px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between}
-  .footer p{font-size:0.78rem;color:var(--gray-400);font-family:'DM Mono',monospace}
-  .footer-links{display:flex;gap:1.5rem}
-  .footer-links a{font-size:0.78rem;color:var(--gray-400);text-decoration:none;font-family:'DM Mono',monospace}
-  .footer-links a:hover{color:var(--black)}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(–gray-200);border:0.5px solid var(–gray-200);border-radius:12px;overflow:hidden}
+.plan{background:#fff;padding:2rem}
+.plan.featured{background:var(–black)}
+.plan-name{font-size:0.75rem;font-family:‘DM Mono’,monospace;color:var(–gray-400);margin-bottom:0.75rem}
+.plan-name.light{color:rgba(255,255,255,0.5)}
+.plan-price{font-size:2rem;font-weight:300;letter-spacing:-0.03em;margin-bottom:0.25rem;color:var(–black)}
+.plan-price.light{color:#fff}
+.plan-sub{font-size:0.8rem;color:var(–gray-400);margin-bottom:1.5rem;font-weight:300}
+.plan-sub.light{color:rgba(255,255,255,0.4)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.75rem}
+.plan-features li{font-size:0.83rem;color:var(–gray-600);display:flex;gap:0.5rem;font-weight:300}
+.plan-features li.light{color:rgba(255,255,255,0.7)}
+.check{color:var(–green);font-weight:500}
+.check.light{color:#97C459}
+.btn-white{background:#fff;color:var(–black);border:none;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:‘DM Sans’,sans-serif;cursor:pointer;font-weight:500;width:100%;transition:opacity 0.15s}
+.btn-white:hover{opacity:0.9}
+.btn-outline-full{background:transparent;color:var(–black);border:0.5px solid var(–gray-200);padding:0.65rem 1.4rem;border-radius:6px;font-size:0.875rem;font-family:‘DM Sans’,sans-serif;cursor:pointer;font-weight:400;width:100%;transition:all 0.15s}
+.btn-outline-full:hover{border-color:var(–black)}
 
-  .divider{height:0.5px;background:var(--gray-200);max-width:900px;margin:0 auto}
-  @media(max-width:700px){
-    .nav{padding:1rem 1.5rem}.hero{padding:4rem 1.5rem}.section{padding:3.5rem 1.5rem}
-    .how-steps,.features-grid,.calc-grid,.pricing-grid{grid-template-columns:1fr}
-    .footer{flex-direction:column;gap:1rem;text-align:center}
-    .calc-section{padding:3.5rem 1.5rem}
-  }
+/* CTA */
+.cta-section{padding:6rem 3rem;text-align:center;max-width:700px;margin:0 auto}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:-0.03em;line-height:1.2;margin-bottom:1rem}
+.cta-section h2 strong{font-weight:500}
+.cta-section p{color:var(–gray-600);margin-bottom:2.5rem;font-size:1rem;font-weight:300;line-height:1.7}
+
+/* FOOTER */
+.footer{padding:2rem 3rem;border-top:0.5px solid var(–gray-200);display:flex;align-items:center;justify-content:space-between}
+.footer p{font-size:0.78rem;color:var(–gray-400);font-family:‘DM Mono’,monospace}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.78rem;color:var(–gray-400);text-decoration:none;font-family:‘DM Mono’,monospace}
+.footer-links a:hover{color:var(–black)}
+.divider{height:0.5px;background:var(–gray-200);max-width:900px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+.nav{padding:1rem 1.5rem}
+.nav-links{display:none}
+.hero{padding:4rem 1.5rem 3rem}
+.section{padding:3.5rem 1.5rem}
+.how-steps{grid-template-columns:1fr}
+.features-grid{grid-template-columns:1fr}
+.calc-grid{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.footer{flex-direction:column;gap:1rem;text-align:center}
+.calc-section{padding:3.5rem 1.5rem}
+.cta-section{padding:4rem 1.5rem}
+}
 </style>
+
+</head>
+<body>
+
+<!-- NAV -->
 
 <nav class="nav">
   <div class="logo">node<span>vo</span></div>
   <ul class="nav-links">
     <li><a href="#como">Cómo funciona</a></li>
     <li><a href="#calc">Calculadora</a></li>
-    <li><a href="#precio">Precios</a></li>
+    <li><a href="#cta">Contacto</a></li>
   </ul>
-  <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Agendar demo</button>
+  <a href="#cta" class="btn-primary">Agendar demo</a>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
-  <div class="hero-tag"><span class="hero-tag-dot"></span>Automatización inteligente para escuelas</div>
+  <div class="hero-tag"><span class="hero-tag-dot"></span>Automatización inteligente · WhatsApp + IA</div>
   <h1>Recupera tu cartera vencida <strong>sin esfuerzo humano</strong></h1>
-  <p>Nodevo conecta WhatsApp, inteligencia artificial y tu base de datos para cobrar colegiaturas de forma automática — sin cambiar tus sistemas actuales.</p>
+  <p>Nodevo conecta WhatsApp, inteligencia artificial y tu base de datos para cobrar pagos recurrentes de forma automática — sin cambiar tus sistemas actuales.</p>
   <div class="hero-actions">
-    <button class="btn-primary" onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})">Calcular mi ROI</button>
+    <a href="#calc" class="btn-primary">Calcular mi ROI</a>
     <button class="btn-secondary" onclick="document.getElementById('como').scrollIntoView({behavior:'smooth'})">Ver cómo funciona</button>
   </div>
 </section>
+
+<!-- LOGOS -->
 
 <div class="logos">
   <div class="logos-inner">
@@ -136,20 +188,22 @@
   </div>
 </div>
 
+<!-- CÓMO FUNCIONA -->
+
 <section class="section" id="como">
   <div class="section-label">Cómo funciona</div>
   <h2>Del moroso al pagado <strong>en 3 pasos</strong></h2>
-  <p class="section-sub">Sin migraciones. Sin cambiar tus sistemas. Implementación en menos de 72 horas.</p>
+  <p class="section-sub">Sin migraciones. Sin cambiar tus sistemas. Implementación en menos de 72 horas. Funciona para escuelas, academias, gimnasios y cualquier negocio con pagos recurrentes.</p>
   <div class="how-steps">
     <div class="step">
       <div class="step-num">01</div>
       <h3>Cargamos tu lista de morosos</h3>
-      <p>Sube un Excel con los datos de los padres. Nosotros configuramos el sistema con tu información y branding.</p>
+      <p>Sube un Excel con los datos de tus clientes. Nosotros configuramos el sistema con tu información y branding en menos de 72 horas.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
       <h3>El sistema contacta automáticamente</h3>
-      <p>WhatsApp envía recordatorios personalizados con montos exactos, fechas y link de pago. La IA clasifica cada respuesta.</p>
+      <p>WhatsApp envía recordatorios personalizados con montos exactos, fechas y link de pago. La IA clasifica cada respuesta en tiempo real.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
@@ -163,14 +217,14 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#0a0a0a"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#0a0a0a"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#0a0a0a"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#9a9893"/></svg>
       </div>
       <h3>Detección de intención con IA</h3>
-      <p>Clasifica automáticamente respuestas de padres: "ya pagué", "¿cómo pago?", "tengo problemas" y responde en consecuencia.</p>
+      <p>Clasifica automáticamente respuestas: "ya pagué", "¿cómo pago?", "tengo problemas" y responde al instante en consecuencia.</p>
     </div>
     <div class="feature">
       <div class="feature-icon">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v4l3 3" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="6" stroke="#0a0a0a" stroke-width="1"/></svg>
       </div>
       <h3>Seguimiento escalonado</h3>
-      <p>3 recordatorios automáticos en intervalos configurables. Escalamiento a atención humana solo cuando es necesario.</p>
+      <p>3 recordatorios automáticos en intervalos configurables. Escalamiento a atención humana solo cuando es realmente necesario.</p>
     </div>
     <div class="feature">
       <div class="feature-icon">
@@ -191,22 +245,24 @@
 
 <div class="divider"></div>
 
+<!-- CALCULADORA -->
+
 <section class="calc-section" id="calc">
   <div class="calc-inner">
     <div class="section-label">Calculadora de ROI</div>
-    <h2 class="section h2" style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;letter-spacing:-0.02em;line-height:1.25;margin-bottom:0.5rem">¿Cuánto dinero estás <strong>dejando de cobrar?</strong></h2>
-    <p style="color:var(--gray-600);font-size:1rem;font-weight:300;line-height:1.7;max-width:500px;margin-bottom:0">Ajusta los datos de tu escuela y ve el impacto real en tu flujo de efectivo.</p>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;letter-spacing:-0.02em;line-height:1.25;margin-bottom:0.5rem">¿Cuánto dinero estás <strong>dejando de cobrar?</strong></h2>
+    <p style="color:var(--gray-600);font-size:1rem;font-weight:300;line-height:1.7;max-width:500px;margin-bottom:0">Ajusta los datos de tu negocio y ve el impacto real en tu flujo de efectivo.</p>
     <div class="calc-grid">
       <div class="calc-controls">
         <div class="ctrl-group">
-          <label>Número de alumnos</label>
-          <input type="range" id="alumnos" min="50" max="800" step="10" value="300" oninput="calcROI()">
-          <div class="ctrl-val" id="alumnos-val">300 alumnos</div>
+          <label>Número de alumnos / miembros</label>
+          <input type="range" id="alumnos" min="150" max="1000" step="10" value="400" oninput="calcROI()">
+          <div class="ctrl-val" id="alumnos-val">400 alumnos</div>
         </div>
         <div class="ctrl-group">
-          <label>Colegiatura mensual promedio (MXN)</label>
-          <input type="range" id="colegiatura" min="500" max="8000" step="100" value="2000" oninput="calcROI()">
-          <div class="ctrl-val" id="col-val">$2,000</div>
+          <label>Pago mensual promedio (MXN)</label>
+          <input type="range" id="colegiatura" min="500" max="15000" step="100" value="3000" oninput="calcROI()">
+          <div class="ctrl-val" id="col-val">$3,000</div>
         </div>
         <div class="ctrl-group">
           <label>Porcentaje de morosidad actual</label>
@@ -219,83 +275,96 @@
           <div class="ctrl-val" id="rec-val">60%</div>
         </div>
       </div>
-      <div class="calc-results" id="results">
-        <div class="result-row">
-          <span class="result-label">Cartera vencida mensual</span>
-          <span class="result-value" id="r-cartera">$132,000</span>
+      <div>
+        <div class="calc-results">
+          <div class="result-row">
+            <span class="result-label">Cartera vencida mensual</span>
+            <span class="result-value" id="r-cartera">$264,000</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Recuperación estimada / mes</span>
+            <span class="result-value green" id="r-recuperacion">$158,400</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Recuperación estimada / año</span>
+            <span class="result-value green" id="r-anual">$1,900,800</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Costo mensual Nodevo</span>
+            <span class="result-value" id="r-costo">$8,000</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Horas admin liberadas / mes</span>
+            <span class="result-value" id="r-horas">~53 hrs</span>
+          </div>
+          <div class="result-row highlight" id="roi-row">
+            <span class="result-label light">ROI mensual neto</span>
+            <span class="result-value light" id="r-roi">$150,400</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Retorno sobre inversión</span>
+            <span class="result-value green" id="r-mult">18x</span>
+          </div>
         </div>
-        <div class="result-row">
-          <span class="result-label">Recuperación estimada</span>
-          <span class="result-value green" id="r-recuperacion">$79,200</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">Costo mensual Nodevo</span>
-          <span class="result-value" id="r-costo">$8,000</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">Horas admin liberadas / mes</span>
-          <span class="result-value" id="r-horas">~60 hrs</span>
-        </div>
-        <div class="result-row highlight">
-          <span class="result-label light">ROI mensual neto</span>
-          <span class="result-value light" id="r-roi">$71,200</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">Retorno sobre inversión</span>
-          <span class="result-value green" id="r-mult">890x</span>
-        </div>
+        <div class="roi-alert" id="roi-alert"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="precio">
-  <div class="section-label">Precios</div>
-  <h2>Simple, <strong>sin sorpresas</strong></h2>
-  <p class="section-sub">Precio fijo mensual. Sin comisiones por pago, sin costos ocultos.</p>
-  <div class="pricing-grid">
-    <div class="plan">
-      <div class="plan-name">Piloto fundador</div>
-      <div class="plan-price">$6,000 <span style="font-size:1rem;color:var(--gray-400)">/mes</span></div>
-      <div class="plan-sub">Primeros 3 meses · Setup $10,000 único</div>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> Hasta 500 mensajes/mes</li>
-        <li><span class="check">✓</span> Dashboard Looker Studio</li>
-        <li><span class="check">✓</span> IA de clasificación de respuestas</li>
-        <li><span class="check">✓</span> Soporte L-V 9am–7pm</li>
-        <li><span class="check">✓</span> Implementación en 72 hrs</li>
-      </ul>
-      <button class="btn-secondary" style="width:100%" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Agendar demo</button>
+<!-- QUÉ INCLUYE -->
+
+<section class="section" id="incluye">
+  <div class="section-label">Qué incluye</div>
+  <h2>Todo lo que necesitas <strong>desde el día uno</strong></h2>
+  <p class="section-sub">Sin contratos largos. Sin setup complicado. Implementamos en menos de 72 horas y acompañamos todo el proceso.</p>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#0a0a0a" stroke-width="1"/><path d="M5 3V2M11 3V2" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round"/><path d="M2 6h12" stroke="#0a0a0a" stroke-width="1"/></svg>
+      </div>
+      <h3>Implementación en 72 horas</h3>
+      <p>Nos encargamos de toda la configuración. Solo necesitas enviarnos tu lista de morosos en Excel.</p>
     </div>
-    <div class="plan featured">
-      <div class="plan-name light">Estándar</div>
-      <div class="plan-price light">$8,000 <span style="font-size:1rem;color:rgba(255,255,255,0.4)">/mes</span></div>
-      <div class="plan-sub light">Después del mes 3 · Setup $15,000 único</div>
-      <ul class="plan-features">
-        <li class="light"><span class="check light">✓</span> Todo del plan Piloto</li>
-        <li class="light"><span class="check light">✓</span> Mensajes extra a $0.50 c/u</li>
-        <li class="light"><span class="check light">✓</span> Reportes semanales automáticos</li>
-        <li class="light"><span class="check light">✓</span> Ajustes a mensajes incluidos</li>
-        <li class="light"><span class="check light">✓</span> Garantía: si no bajas morosidad 20% en 30 días, el mes 2 es gratis</li>
-      </ul>
-      <button class="btn-white" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Empezar ahora</button>
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Dashboard en tiempo real</h3>
+      <p>Métricas de cobranza, tasa de respuesta y cartera recuperada, actualizadas al momento.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#0a0a0a" stroke-width="1"/><path d="M8 5v3l2 2" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Soporte dedicado L-V</h3>
+      <p>Equipo disponible de 9am a 7pm para ajustes, dudas y optimización de mensajes.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5 6.5 5z" stroke="#0a0a0a" stroke-width="1" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Garantía de resultados</h3>
+      <p>Si en 30 días no reduces tu morosidad un 20%, el segundo mes es completamente gratis.</p>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- CTA -->
+
 <section class="cta-section" id="cta">
   <div class="section-label" style="text-align:center">Siguiente paso</div>
   <h2>¿Listo para <strong>dejar de perseguir pagos?</strong></h2>
   <p>Agenda una demo de 20 minutos. Te mostramos el sistema funcionando en vivo con datos reales de cobranza.</p>
   <div class="hero-actions">
-    <a href="https://wa.me/528148982447?text=Hola,%20quiero%20una%20demo%20de%20Nodevo" target="_blank">
-      <button class="btn-primary">Escribirnos por WhatsApp</button>
-    </a>
+    <a href="https://wa.me/528148982447?text=Hola,%20quiero%20una%20demo%20de%20Nodevo" target="_blank" class="btn-primary">Escribirnos por WhatsApp</a>
   </div>
   <p style="font-size:0.78rem;color:var(--gray-400);margin-top:1.5rem;font-family:'DM Mono',monospace">Sin compromisos · Demo gratuita · Respuesta en menos de 2 horas</p>
 </section>
+
+<!-- FOOTER -->
 
 <footer class="footer">
   <p>nodevo.com.mx © 2026</p>
@@ -308,27 +377,53 @@
 
 <script>
 function fmt(n){return '$'+Math.round(n).toLocaleString('es-MX')}
+
 function calcROI(){
-  var alumnos=parseInt(document.getElementById('alumnos').value);
-  var col=parseInt(document.getElementById('colegiatura').value);
-  var mor=parseInt(document.getElementById('morosidad').value)/100;
-  var rec=parseInt(document.getElementById('recuperacion').value)/100;
-  document.getElementById('alumnos-val').textContent=alumnos+' alumnos';
-  document.getElementById('col-val').textContent=fmt(col);
-  document.getElementById('mor-val').textContent=Math.round(mor*100)+'%';
-  document.getElementById('rec-val').textContent=Math.round(rec*100)+'%';
-  var cartera=alumnos*col*mor;
-  var recuperado=cartera*rec;
-  var costo=8000;
-  var horas=Math.round(alumnos*mor*0.3);
-  var roi=recuperado-costo;
-  var mult=Math.round(roi/costo);
-  document.getElementById('r-cartera').textContent=fmt(cartera);
-  document.getElementById('r-recuperacion').textContent=fmt(recuperado);
-  document.getElementById('r-costo').textContent=fmt(costo);
-  document.getElementById('r-horas').textContent='~'+horas+' hrs';
-  document.getElementById('r-roi').textContent=fmt(roi);
-  document.getElementById('r-mult').textContent=mult+'x';
+  var alumnos = parseInt(document.getElementById('alumnos').value);
+  var col = parseInt(document.getElementById('colegiatura').value);
+  var mor = parseInt(document.getElementById('morosidad').value) / 100;
+  var rec = parseInt(document.getElementById('recuperacion').value) / 100;
+
+  document.getElementById('alumnos-val').textContent = alumnos + ' alumnos';
+  document.getElementById('col-val').textContent = fmt(col);
+  document.getElementById('mor-val').textContent = Math.round(mor * 100) + '%';
+  document.getElementById('rec-val').textContent = Math.round(rec * 100) + '%';
+
+  var cartera = alumnos * col * mor;
+  var recuperado = cartera * rec;
+  var recuperadoAnual = recuperado * 12;
+  var costo = 8000;
+  var horas = Math.round(alumnos * mor * 0.3);
+  var roi = recuperado - costo;
+  var mult = roi > 0 ? Math.round(roi / costo) : Math.round(roi / costo);
+
+  document.getElementById('r-cartera').textContent = fmt(cartera);
+  document.getElementById('r-recuperacion').textContent = fmt(recuperado);
+  document.getElementById('r-anual').textContent = fmt(recuperadoAnual);
+  document.getElementById('r-costo').textContent = fmt(costo);
+  document.getElementById('r-horas').textContent = '~' + horas + ' hrs';
+  document.getElementById('r-roi').textContent = fmt(roi);
+  document.getElementById('r-mult').textContent = mult + 'x';
+
+  var roiAlert = document.getElementById('roi-alert');
+  var multEl = document.getElementById('r-mult');
+  var roiEl = document.getElementById('r-roi');
+
+  if(roi < 0){
+    roiEl.className = 'result-value red light';
+    multEl.className = 'result-value red';
+    roiAlert.className = 'roi-alert negative';
+    roiAlert.innerHTML = 'Con este volumen, el plan estándar puede no ser el más adecuado. <strong>Conversemos</strong> — tenemos opciones para negocios en crecimiento. <a href="https://wa.me/528148982447?text=Hola,%20quiero%20información%20de%20Nodevo" target="_blank" style="color:var(--red);font-weight:500">Escríbenos →</a>';
+  } else {
+    roiEl.className = 'result-value light';
+    multEl.className = 'result-value green';
+    roiAlert.className = 'roi-alert positive';
+    roiAlert.innerHTML = 'Con estos números, Nodevo se paga solo en el primer mes. El resto es ganancia recuperada. <a href="#cta" style="color:var(--green);font-weight:500">Agenda tu demo →</a>';
+  }
 }
+
 calcROI();
 </script>
+
+</body>
+</html>
